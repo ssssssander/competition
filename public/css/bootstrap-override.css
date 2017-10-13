@@ -31,3 +31,7 @@ body {
 .navbar>.container-fluid .navbar-brand, .navbar>.container .navbar-brand {
     margin-left: 0;
 }
+.panel-default>.panel-heading {
+    color: #fff;
+    font-weight: bold;
+}

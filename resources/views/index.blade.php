@@ -4,7 +4,6 @@
 
 @section('content')
     <div class="container">
-        <img src="{{ asset('storage/xbecM6E9spYZpaH92d93STDfUIHoWDZrhg2GzDBO.jpeg') }}" alt="">
         <div class="jumbotron">
             <a href="{{ route('participate') }}" class="btn btn-lg btn-default btn-block text-uppercase" role="button">Neem nu deel</a>
             <div class="row">

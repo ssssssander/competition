@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1", shrink-to-fit=no>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link type="image/x-icon" rel="icon" href="{{ asset('favicon.ico') }}">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -19,7 +20,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{ route('index') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="Iron Maiden">
+                    <img src="{{ asset('images/logo.png') }}" alt="Iron Maiden logo">
                 </a>
             </div>
             <ul class="nav navbar-nav">
@@ -27,7 +28,10 @@
                     <a href="{{ route('index') }}">Home</a>
                 </li>
                 <li>
-                    <a href="{{ route('participate') }}">Neem deel</a>
+                    <a href="{{ route('participate') }}">Deelnemen</a>
+                </li>
+                <li>
+                    <a href="{{ route('winners') }}">Winnaars</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

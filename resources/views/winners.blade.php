@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Deelnemen')
+@section('title', 'Winnaars')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading text-uppercase">Deelnemen</div>
+                    <div class="panel-heading text-uppercase">Winnaars</div>
                     <div class="panel-body">
-                        {!! form($form) !!}
+                        Winnaars
                     </div>
             </div>
         </div>

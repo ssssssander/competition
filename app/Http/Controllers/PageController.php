@@ -19,6 +19,11 @@ class PageController extends Controller
         return view('dashboard');
     }
 
+    public function winners(Request $request)
+    {
+        return view('winners');
+    }
+
     public function logout(Request $request)
     {
         Auth::logout();
