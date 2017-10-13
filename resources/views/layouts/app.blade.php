@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'Wedstrijd') }} | @yield('title')</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap-override.css') }}" rel="stylesheet">
 </head>
 <body>

@@ -31,7 +31,3 @@ body {
 .navbar>.container-fluid .navbar-brand, .navbar>.container .navbar-brand {
     margin-left: 0;
 }
-.jumbotron {
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #f7f7f7;
-}
