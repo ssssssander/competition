@@ -9,7 +9,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Neem deel</div>
                     <div class="panel-body">
-                        Jup
+                        {!! form($form) !!}
                     </div>
             </div>
         </div>
