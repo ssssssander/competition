@@ -48,10 +48,18 @@ class PageController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        // $participant = new Participant;
-        $name = $request->input('name');
-        var_dump($name);
+        $participant = new Participant();
+        $participant->name = $request->input('name');
+        $participant->address = $request->input('address');
+        $participant->city = $request->input('city');
+        $participant->email = $request->input('email');
+        $path = $request->file('image')->store('public/uploads');
+        $participant->image_path = $path;
+        $participant->ip = $request->ip();
+        $participant->votes = 0;
 
-        // Do saving and other things...
+        $participant->save();
+
+        return redirect()->route('index');
     }
 }
