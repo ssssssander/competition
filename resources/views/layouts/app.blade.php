@@ -12,12 +12,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-override.css') }}" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse text-uppercase">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('index') }}">Game Mania</a>
+                <a class="navbar-brand" href="{{ route('index') }}">
+                    <img src="{{ asset('images/logo.png') }}" alt="Iron Maiden">
+                </a>
             </div>
             <ul class="nav navbar-nav">
                 <li>
@@ -37,7 +40,7 @@
                     </li>
                 @else
                     <li>
-                        <a href="{{ route('login') }}">Login voor wedstrijdverantwoordelijke</a>
+                        <a href="{{ route('login') }}">Log in</a>
                     </li>
                 @endif
             </ul>
