@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PageController@index')->name('index');
+Route::get('/participate', 'PageController@participate')
+    ->name('participate');
+Route::get('/dashboard', 'PageController@dashboard')
+    ->name('dashboard')->middleware('auth');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
