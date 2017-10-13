@@ -32,6 +32,9 @@
                     <li>
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
+                    <li>
+                        <a href="{{ route('logout') }}">Log uit</a>
+                    </li>
                 @else
                     <li>
                         <a href="{{ route('login') }}">Login voor wedstrijdverantwoordelijke</a>
