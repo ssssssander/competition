@@ -21,6 +21,8 @@ Route::get('/dashboard', 'PageController@dashboard')->name('dashboard')->middlew
 
 Route::get('/vote', 'PageController@vote_page')->name('vote_page');
 
+Route::get('/vote/{participant}', 'PageController@vote')->name('vote');
+
 Route::get('/participate', 'PageController@participate')->name('participate');
 
 Route::post('/participate/store', 'PageController@store_participant')->name('store_participant');

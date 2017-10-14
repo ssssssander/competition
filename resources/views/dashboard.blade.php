@@ -10,6 +10,7 @@
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Id</th>
                 <th>Naam</th>
                 <th>Adres</th>
@@ -24,20 +25,21 @@
         <tbody>
             @forelse ($participants as $participant )
                 <tr>
-                    <th>{{ $participant->id }}</th>
-                    <th>{{ $participant->name }}</th>
-                    <th>{{ $participant->address }}</th>
-                    <th>{{ $participant->city }}</th>
-                    <th>{{ $participant->email }}</th>
-                    <th>{{ $participant->votes }}</th>
-                    <th>{{ $participant->ip }}</th>
-                    <th><img src="{{ asset($participant->image_path) }}" alt="{{ $participant->name }}"></th>
-                    <th>{{ $participant->created_at }}</th>
-                    <th><a href="{{ route('delete_participant', ['participant' => $participant]) }}" class="btn btn-danger">X</a></th>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $participant->id }}</td>
+                    <td>{{ $participant->name }}</td>
+                    <td>{{ $participant->address }}</td>
+                    <td>{{ $participant->city }}</td>
+                    <td>{{ $participant->email }}</td>
+                    <td>{{ $participant->votes }}</td>
+                    <td>{{ $participant->ip }}</td>
+                    <td><img src="{{ asset($participant->image_path) }}" alt="{{ $participant->name }}"></td>
+                    <td>{{ $participant->created_at }}</td>
+                    <td><a href="{{ route('delete_participant', ['participant' => $participant]) }}" class="btn btn-danger" data-toggle="tooltip" title="Verwijder deze deelnemer">X</a></td>
                 </tr>
             @empty
                 <tr>
-                    <th colspan="8">Geen deelnemers :(</th>
+                    <td colspan="8">Geen deelnemers :(</td>
                 </tr>
             @endforelse
         </tbody>

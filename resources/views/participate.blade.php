@@ -5,7 +5,7 @@
 @section('content')
     @if (session()->has('store_participant_success'))
         <div class="alert alert-success">{{ session('store_participant_success') }}</div>
-    @else
+    @endif {{-- @else --}}
         {!! form($form) !!}
-    @endif
+    {{-- @endif --}}
 @endsection

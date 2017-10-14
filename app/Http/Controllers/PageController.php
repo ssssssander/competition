@@ -40,6 +40,13 @@ class PageController extends Controller
         return view('vote_page', compact('participants'));
     }
 
+    public function vote(Participant $participant, Request $request)
+    {
+        $participant->increment('votes');
+
+        return redirect()->back();
+    }
+
     public function participate(FormBuilder $formBuilder, Request $request)
     {
         $form = $formBuilder->create(\App\Forms\ParticipantForm::class, [

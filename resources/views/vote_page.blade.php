@@ -7,10 +7,11 @@
     @forelse ($participants as $participant)
         <div class="thumbnail pull-left">
             <img src="{{ asset($participant->image_path) }}" alt="{{ $participant->name }}">
-            <div class="caption">
+            <div class="caption pull-left">
                 <small>{{ $participant->name }}</small>
-                <p class="d-inline-block">{{ $participant->votes }} @if($participant->votes == 1) stem @else stemmen @endif</p>
+                <p>{{ $participant->votes }} @if($participant->votes == 1) stem @else stemmen @endif</p>
             </div>
+            <a href="{{ route('vote', ['participant' => $participant]) }}" alt="Stem" class="pull-right" data-toggle="tooltip" title="Stem op deze foto" style="background-image: url('../images/vote.png')"></a>
         </div>
     @empty
         <p class="lead">Geen deelnemers :(</p>
