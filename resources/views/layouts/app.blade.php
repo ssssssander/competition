@@ -31,7 +31,7 @@
                     <a href="{{ route('participate') }}">Deelnemen</a>
                 </li>
                 <li>
-                    <a href="{{ route('winners') }}">Winnaars</a>
+                    <a href="{{ route('vote_page') }}">Stem</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

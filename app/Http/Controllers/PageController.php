@@ -16,12 +16,14 @@ class PageController extends Controller
 
     public function dashboard(Request $request)
     {
-        return view('dashboard');
+        $participants = Participant::all();
+
+        return view('dashboard', compact('participants'));
     }
 
-    public function winners(Request $request)
+    public function vote_page(Request $request)
     {
-        return view('winners');
+        return view('vote_page');
     }
 
     public function logout(Request $request)

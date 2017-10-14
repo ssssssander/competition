@@ -19,7 +19,7 @@ Route::post('/participate/store', 'PageController@store_participant')->name('sto
 
 Route::get('/dashboard', 'PageController@dashboard')->name('dashboard')->middleware('auth');
 
-Route::get('/winners', 'PageController@winners')->name('winners');
+Route::get('/vote', 'PageController@vote_page')->name('vote_page');
 
 Route::get('/logout', 'PageController@logout')->name('logout');
 
