@@ -50,7 +50,7 @@
             </ul>
         </div>
     </nav>
-    @yield('content')
+    @yield('main')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

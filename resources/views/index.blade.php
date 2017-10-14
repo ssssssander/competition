@@ -2,7 +2,7 @@
 
 @section('title', 'Home')
 
-@section('content')
+@section('main')
     <div class="container">
         <div class="jumbotron">
             <a href="{{ route('participate') }}" class="btn btn-lg btn-default btn-block text-uppercase" role="button">Neem nu deel</a>
