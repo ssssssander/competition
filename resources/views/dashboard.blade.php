@@ -3,6 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
+    @if (session()->has('delete_participant_success'))
+        <div class="alert alert-success">{!! session('delete_participant_success') !!}</div>
+    @endif
     <p class="lead">Lijst deelnemers + soft delete</p>
     <p class="lead">symlink? php artisan storage:link :(</p>
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
@@ -29,6 +32,7 @@
                     <th>{{ $participant->ip }}</th>
                     <th><img src="{{ asset('') }}" alt="Foto hier"></th>
                     <th>{{ $participant->created_at }}</th>
+                    <th><a href="{{ route('delete_participant', ['participant' => $participant]) }}" class="btn btn-danger">X</a></th>
                 </tr>
             @empty
                 <tr>

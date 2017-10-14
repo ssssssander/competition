@@ -70,6 +70,13 @@ class PageController extends Controller
         $participant->save();
 
         $request->session()->put('store_participant_success', 'Je deelname is bevestigd!');
+
         return redirect()->back();
+    }
+
+    public function delete_participant(Participant $participant, Request $request) {
+        $participant->delete();
+
+        return redirect()->back()->with('delete_participant_success', "Deelnemer <strong>{$participant->name}</strong> verwijderd");
     }
 }
