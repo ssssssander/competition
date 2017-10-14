@@ -25,7 +25,7 @@ class PageController extends Controller
     {
         $participants = Participant::all();
 
-        return view('vote_page');
+        return view('vote_page', compact('participants'));
     }
 
     public function logout(Request $request)
