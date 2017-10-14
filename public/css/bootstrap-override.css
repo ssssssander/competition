@@ -38,4 +38,8 @@ body {
 .panel-body img {
     height: 200px;
     width: auto;
+    max-width: 400px;
+}
+.thumbnail {
+    margin-right: 10px;
 }
