@@ -13,19 +13,19 @@
 
 Route::get('/', 'PageController@index')->name('index');
 
+Route::get('/home', 'PageController@home')->name('home');
+
+Route::get('/logout', 'PageController@logout')->name('logout');
+
+Route::get('/dashboard', 'PageController@dashboard')->name('dashboard')->middleware('auth');
+
+Route::get('/vote', 'PageController@vote_page')->name('vote_page');
+
 Route::get('/participate', 'PageController@participate')->name('participate');
 
 Route::post('/participate/store', 'PageController@store_participant')->name('store_participant');
 
-Route::get('/dashboard', 'PageController@dashboard')->name('dashboard')->middleware('auth');
-
-Route::get('/dashboard/delete_participant/{participant}', 'PageController@delete_participant')->name('delete_participant')->middleware('auth');
-
-Route::get('/vote', 'PageController@vote_page')->name('vote_page');
-
-Route::get('/logout', 'PageController@logout')->name('logout');
-
-Route::get('/home', 'PageController@home')->name('home');
+Route::get('/dashboard/delete_participant/{participant}', 'PageController@delete_participant')->name('delete_participant');
 
 
 // Auth::routes() but without registration routes

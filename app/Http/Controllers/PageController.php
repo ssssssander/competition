@@ -14,6 +14,17 @@ class PageController extends Controller
         return view('index');
     }
 
+    public function home(Request $request)
+    {
+        return redirect()->route('index');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('index');
+    }
+
     public function dashboard(Request $request)
     {
         $participants = Participant::all();
@@ -26,17 +37,6 @@ class PageController extends Controller
         $participants = Participant::all();
 
         return view('vote_page', compact('participants'));
-    }
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        return redirect()->route('index');
-    }
-
-    public function home(Request $request)
-    {
-        return redirect()->route('index');
     }
 
     public function participate(FormBuilder $formBuilder, Request $request)

@@ -36,7 +36,7 @@
                 </tr>
             @empty
                 <tr>
-                    <th>Geen deelnemers :(</th>
+                    <th colspan="8">Geen deelnemers :(</th>
                 </tr>
             @endforelse
         </tbody>
