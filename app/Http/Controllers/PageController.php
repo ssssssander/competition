@@ -23,6 +23,8 @@ class PageController extends Controller
 
     public function vote_page(Request $request)
     {
+        $participants = Participant::all();
+
         return view('vote_page');
     }
 
@@ -67,6 +69,7 @@ class PageController extends Controller
 
         $participant->save();
 
-        return redirect()->route('index');
+        $request->session()->put('store_participant_success', 'Je deelname is bevestigd!');
+        return redirect()->back();
     }
 }
