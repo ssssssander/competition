@@ -22,8 +22,8 @@ body {
     padding: 5px 6px;
 }
 .navbar-brand>img {
-  height: 100%;
-  width: auto;
+    height: 100%;
+    width: auto;
 }
 .navbar-nav {
     margin-left: 20px;
@@ -36,6 +36,6 @@ body {
     font-weight: bold;
 }
 .panel-body img {
-    width: 200px;
-    height: auto;
+    height: 200px;
+    width: auto;
 }
