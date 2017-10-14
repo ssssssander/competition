@@ -35,3 +35,7 @@ body {
     color: #fff;
     font-weight: bold;
 }
+.panel-body img {
+    width: 200px;
+    height: auto;
+}

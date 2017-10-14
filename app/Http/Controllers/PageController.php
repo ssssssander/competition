@@ -63,7 +63,7 @@ class PageController extends Controller
         $participant->address = $request->input('address');
         $participant->city = $request->input('city');
         $participant->email = $request->input('email');
-        $path = $request->file('image')->store('public/uploads');
+        $path = $request->file('image')->store('uploads', 'uploads');
         $participant->image_path = $path;
         $participant->ip = $request->ip();
         $participant->votes = 0;
