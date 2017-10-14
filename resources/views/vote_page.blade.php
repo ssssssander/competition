@@ -4,7 +4,6 @@
 
 @section('content')
     <p class="lead">Stem op jouw favoriete foto!</p>
-    <p class="lead">symlink? php artisan storage:link :(</p>
     @forelse ($participants as $participant)
         <div class="col-md-4 thumbnail">
             <img src="{{ asset('') }}" alt="{{ $participant->name }}">

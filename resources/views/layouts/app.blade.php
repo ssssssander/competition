@@ -25,26 +25,26 @@
             </div>
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="{{ route('index') }}">Home</a>
+                    <a href="{{ route('index') }}" {{ Route::is('index') ? 'class=active' : null }}>Home</a>
                 </li>
                 <li>
-                    <a href="{{ route('participate') }}">Deelnemen</a>
+                    <a href="{{ route('participate') }}" {{ Route::is('participate') ? 'class=active' : null }}>Deelnemen</a>
                 </li>
                 <li>
-                    <a href="{{ route('vote_page') }}">Stem</a>
+                    <a href="{{ route('vote_page') }}" {{ Route::is('vote_page') ? 'class=active' : null }}>Stem</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if (Auth::check())
                     <li>
-                        <a href="{{ route('dashboard') }}">Dashboard</a>
+                        <a href="{{ route('dashboard') }}" {{ Route::is('dashboard') ? 'class=active' : null }}>Dashboard</a>
                     </li>
                     <li>
                         <a href="{{ route('logout') }}">Log uit</a>
                     </li>
                 @else
                     <li>
-                        <a href="{{ route('login') }}">Log in</a>
+                        <a href="{{ route('login') }}" {{ Route::is('login') ? 'class=active' : null }}>Log in</a>
                     </li>
                 @endif
             </ul>

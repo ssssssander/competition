@@ -28,8 +28,9 @@ class PageController extends Controller
     public function dashboard(Request $request)
     {
         $participants = Participant::all();
+        $participantsCount = Participant::all()->count();
 
-        return view('dashboard', compact('participants'));
+        return view('dashboard', compact('participants', 'participantsCount'));
     }
 
     public function vote_page(Request $request)
