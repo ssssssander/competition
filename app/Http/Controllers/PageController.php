@@ -28,7 +28,6 @@ class PageController extends Controller
         // $term->save();
 
         $now = new Carbon();
-        $currentTerm = 0;
 
         $terms = Term::all();
 
@@ -38,7 +37,7 @@ class PageController extends Controller
             }
         }
 
-        var_dump($currentTerm);
+        var_dump(config('global.current_term'));
 
         return view('index', compact('terms'));
     }
