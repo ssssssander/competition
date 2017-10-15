@@ -14,9 +14,7 @@ class AddTermIdToParticipantsTable extends Migration
     public function up()
     {
         Schema::table('participants', function (Blueprint $table) {
-            $table->integer('term_id')->unsigned()->nullable();
-
-            $table->foreign('term_id')->references('id')->on('terms');
+            $table->integer('term')->unsigned();
         });
     }
 
@@ -28,7 +26,7 @@ class AddTermIdToParticipantsTable extends Migration
     public function down()
     {
         Schema::table('participants', function (Blueprint $table) {
-            $table->dropForeign(['term_id']);
+            $table->dropColumn('term');
         });
     }
 }

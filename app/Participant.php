@@ -10,8 +10,4 @@ class Participant extends Model
     use SoftDeletes;
 
     protected $fillable = ['name', 'address', 'city', 'email'];
-
-    public function wonTerm() {
-        return $this->belongsTo('App\Term', 'winner_participant_id');
-    }
 }

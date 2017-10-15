@@ -18,6 +18,7 @@
                 <th>E-mailadres</th>
                 <th>Stemmen</th>
                 <th>IP-adres</th>
+                <th>Periode</th>
                 <th>Afbeelding</th>
                 <th>Gemaakt op</th>
             </tr>
@@ -33,13 +34,14 @@
                     <td>{{ $participant->email }}</td>
                     <td>{{ $participant->votes }}</td>
                     <td>{{ $participant->ip }}</td>
+                    <td>{{ $participant->term }}</td>
                     <td><a href="{{ url($participant->image_path) }}" target="_blank">Link</a></td>
                     <td>{{ $participant->created_at }}</td>
                     <td><a href="{{ route('delete_participant', ['participant' => $participant]) }}" class="btn btn-danger" data-toggle="tooltip" title="Verwijder deze deelnemer">X</a></td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="8">Geen deelnemers :(</td>
+                    <td colspan="11">Geen deelnemers :(</td>
                 </tr>
             @endforelse
         </tbody>

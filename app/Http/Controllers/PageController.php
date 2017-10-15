@@ -27,19 +27,12 @@ class PageController extends Controller
         // $term->end = Carbon::create(2017, 12, 21, 0, 0, 0)->addWeek()->subSecond();
         // $term->save();
 
-        $now = new Carbon();
-
         $terms = Term::all();
+        $currentTermNr = config('global.current_term');
+        $currentTerm = Term::find($currentTermNr);
+        $winner = Participant::find($currentTerm->winner_participant_id);
 
-        foreach($terms as $term) {
-            if($now->between(new Carbon($term->start), new Carbon($term->end))) {
-                $currentTerm = $term->term;
-            }
-        }
-
-        var_dump(config('global.current_term'));
-
-        return view('index', compact('terms'));
+        return view('index', compact('terms', 'winner'));
     }
 
     public function home(Request $request) {
@@ -123,7 +116,7 @@ class PageController extends Controller
         $participant->image_path = $path;
         $participant->ip = $request->ip();
         $participant->votes = 0;
-        $participant->term_id = 1;
+        $participant->term = config('global.current_term');
 
         $participant->save();
 

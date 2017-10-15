@@ -22,10 +22,17 @@
                 <div class="col-md-12">
                     <ul class="list-group">
                         @foreach ($terms as $term)
-                        <li class="list-group-item">Week {{ $term->term }}:
-                            <time datetime="{{ $term->start }}"></time>{{ $term->start }} tot
-                            <time datetime="{{ $term->end }}"></time>{{ $term->end }}
-                            <strong class="pull-right">Winnaar: {{ $term->winner['name'] }}</strong></li>
+                            <li class="list-group-item">Week {{ $term->term }}:
+                                <time datetime="{{ $term->start }}"></time>{{ $term->start }} tot
+                                <time datetime="{{ $term->end }}"></time>{{ $term->end }}
+                                <strong class="pull-right">Winnaar:
+                                    @if ($winner->term == $term->term)
+                                        {{ $winner['name'] }}
+                                    @else
+                                        ???
+                                    @endif
+                                </strong>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
