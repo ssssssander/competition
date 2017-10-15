@@ -27,7 +27,18 @@ class PageController extends Controller
         // $term->end = Carbon::create(2017, 12, 21, 0, 0, 0)->addWeek()->subSecond();
         // $term->save();
 
+        $now = new Carbon();
+        $currentTerm = 0;
+
         $terms = Term::all();
+
+        foreach($terms as $term) {
+            if($now->between(new Carbon($term->start), new Carbon($term->end))) {
+                $currentTerm = $term->term;
+            }
+        }
+
+        var_dump($currentTerm);
 
         return view('index', compact('terms'));
     }

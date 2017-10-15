@@ -23,7 +23,7 @@
                     <ul class="list-group">
                         @foreach ($terms as $term)
                         <li class="list-group-item">Week {{ $term->term }}: {{ $term->start }} tot {{ $term->end }}
-                            <strong class="pull-right">Winnaar: $term->winner</strong></li>
+                            <strong class="pull-right">Winnaar: {{ $term->winner }}</strong></li>
                         @endforeach
                     </ul>
                 </div>

@@ -9,7 +9,7 @@ class Participant extends Model
 {
     use SoftDeletes;
 
-    // public function wonTerm() {
-    //     return $this->belongsTo('App\Term', 'winner_participant_id');
-    // }
+    public function wonTerm() {
+        return $this->belongsTo('App\Term', 'winner_participant_id');
+    }
 }
