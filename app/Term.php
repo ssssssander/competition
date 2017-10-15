@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Term extends Model
 {
+    protected $fillable = ['start', 'end'];
+
     public function winner() {
         return $this->hasOne('App\Participant');
     }

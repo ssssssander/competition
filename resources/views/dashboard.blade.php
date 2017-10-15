@@ -44,4 +44,5 @@
             @endforelse
         </tbody>
     </table>
+    <a href="{{ route('terms') }}" class="btn btn-lg btn-default text-uppercase">Wijzig periodes</a>
 @endsection

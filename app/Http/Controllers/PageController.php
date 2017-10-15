@@ -52,11 +52,43 @@ class PageController extends Controller
         return redirect()->route('index');
     }
 
-    public function dashboard(Request $request) {
+    public function dashboard(FormBuilder $formBuilder, Request $request) {
         $participants = Participant::all();
         $participantsCount = Participant::all()->count();
 
         return view('dashboard', compact('participants', 'participantsCount'));
+    }
+
+    public function terms(FormBuilder $formBuilder, Request $request) {
+        $terms = Term::all();
+
+        $form = $formBuilder->create(\App\Forms\TermsForm::class, [
+            'method' => 'POST',
+            'url' => route('edit_terms')
+        ]);
+
+        return view('terms', compact('terms', 'form'));
+    }
+
+    public function edit_terms(FormBuilder $formBuilder, Request $request) {
+        $form = $formBuilder->create(\App\Forms\TermsForm::class);
+        $terms = Term::all();
+        $iteration = 1;
+
+        if (!$form->isValid()) {
+            return redirect()->back()->withErrors($form->getErrors())->withInput();
+        }
+
+        foreach($terms as $term) {
+            $term->update(
+                ['start' => $request->input('start' . $iteration)],
+                ['start' => $request->input('end' . $iteration)]
+            );
+
+            $iteration++;
+        }
+
+        return redirect()->back()->with('edit_terms_success', 'Periodes gewijzigd');
     }
 
     public function vote_page(Request $request) {
@@ -87,16 +119,12 @@ class PageController extends Controller
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        $participant = new Participant();
-        $participant->name = $request->input('name');
-        $participant->address = $request->input('address');
-        $participant->city = $request->input('city');
-        $participant->email = $request->input('email');
+        $participant = new Participant($request->all());
         $path = $request->file('image')->store('uploads', 'uploads');
         $participant->image_path = $path;
         $participant->ip = $request->ip();
         $participant->votes = 0;
-        $participant->term_id = $currentTerm;
+        $participant->term_id = 1;
 
         $participant->save();
 
