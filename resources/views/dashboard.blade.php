@@ -4,7 +4,10 @@
 
 @section('content')
     @if (session()->has('delete_participant_success'))
-        <div class="alert alert-success">{!! session('delete_participant_success') !!}</div>
+        <div class="alert alert-success alert-dismissable fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          {!! session('delete_participant_success') !!}
+        </div>
     @endif
     <p>{{ $participantsCount }} @if($participantsCount > 1) deelnemers @else deelnemer @endif</p>
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">

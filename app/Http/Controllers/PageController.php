@@ -72,11 +72,10 @@ class PageController extends Controller
         }
 
         foreach($terms as $term) {
-            $term->update(
-                ['start' => $request->input('start' . $iteration)],
-                ['start' => $request->input('end' . $iteration)]
-            );
+            $term->start = $request->input('start' . $iteration);
+            $term->end = $request->input('end' . $iteration);
 
+            $term->save();
             $iteration++;
         }
 
