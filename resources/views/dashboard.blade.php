@@ -35,7 +35,7 @@
                     <td>{{ $participant->votes }}</td>
                     <td>{{ $participant->ip }}</td>
                     <td>{{ $participant->term }}</td>
-                    <td><a href="{{ url($participant->image_path) }}" target="_blank">Link</a></td>
+                    <td><a href="{{ url($participant->image_path) }}" target="_blank" class="btn btn-default" data-toggle="tooltip" title="Open in een nieuw venster">Link</a></td>
                     <td>{{ $participant->created_at }}</td>
                     <td><a href="{{ route('delete_participant', ['participant' => $participant]) }}" class="btn btn-danger" data-toggle="tooltip" title="Verwijder deze deelnemer">X</a></td>
                 </tr>

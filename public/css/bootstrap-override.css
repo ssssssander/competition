@@ -31,7 +31,7 @@ body {
 .navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-text:hover, .navbar-inverse .navbar-nav > li > .active {
     color: #bc2025;
 }
-.panel-default img {
+.thumbnail > a > img {
     height: 200px;
     width: auto;
     max-width: 200px;
