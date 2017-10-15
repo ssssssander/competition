@@ -96,7 +96,7 @@ class PageController extends Controller
         $participant->image_path = $path;
         $participant->ip = $request->ip();
         $participant->votes = 0;
-        // $participant->term_id = 1;
+        $participant->term_id = $currentTerm;
 
         $participant->save();
 
