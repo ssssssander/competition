@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Participant extends Model
 {
     use SoftDeletes;
+
+    // public function wonTerm() {
+    //     return $this->belongsTo('App\Term', 'winner_participant_id');
+    // }
 }

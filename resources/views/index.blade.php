@@ -21,14 +21,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="list-group">
-                        <li class="list-group-item">Periode 1: xx/xx/xx 00:00:00 tot xx/xx/xx 00:00:00
-                            <strong class="pull-right">Winnaar: ???</strong></li>
-                        <li class="list-group-item">Periode 2: xx/xx/xx 00:00:00 tot xx/xx/xx 00:00:00
-                            <strong class="pull-right">Winnaar: ???</strong></li>
-                        <li class="list-group-item">Periode 3: xx/xx/xx 00:00:00 tot xx/xx/xx 00:00:00
-                            <strong class="pull-right">Winnaar: ???</strong></li>
-                        <li class="list-group-item">Periode 4: xx/xx/xx 00:00:00 tot xx/xx/xx 00:00:00
-                            <strong class="pull-right">Winnaar: ???</strong></li>
+                        @foreach ($terms as $term)
+                        <li class="list-group-item">Week {{ $term->term }}: {{ $term->start }} tot {{ $term->end }}
+                            <strong class="pull-right">Winnaar: $term->winner</strong></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
