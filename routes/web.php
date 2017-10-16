@@ -24,6 +24,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/dashboard/terms/edit_terms', 'PageController@edit_terms')->name('edit_terms');
 
+    Route::get('/dashboard/export', 'PageController@export')->name('export');
+
     Route::get('/logout', 'PageController@logout')->name('logout');
 });
 

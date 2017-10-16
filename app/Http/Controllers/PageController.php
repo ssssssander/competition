@@ -8,6 +8,7 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Carbon\Carbon;
 use App\Participant;
 use App\Term;
+use Excel;
 
 class PageController extends Controller
 {
@@ -49,6 +50,18 @@ class PageController extends Controller
         $participantsCount = Participant::all()->count();
 
         return view('dashboard', compact('participants', 'participantsCount'));
+    }
+
+    public function export(Request $request) {
+        Excel::create('deelnemers', function($excel) {
+            $excel->sheet('deelnemers', function($sheet) {
+                $participants = Participant::all();
+                $sheet->fromArray($participants->toArray());
+                $sheet->row(1, array(
+                     'Id', 'Naam', 'Adres', 'Woonplaats', 'E-mailadres', 'IP-adres', 'Gemaakt op', 'Geüpdatet op', 'Verwijderd op', 'Stemmen', 'Afbeeldingspad', 'Periode'
+                ));
+            });
+        })->export('xlsx');
     }
 
     public function terms(FormBuilder $formBuilder, Request $request) {

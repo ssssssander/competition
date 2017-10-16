@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap-override.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/override.css') }}" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-inverse text-uppercase">
@@ -55,7 +55,9 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="tooltip"]').tooltip({
+                trigger : 'hover'
+            })
         });
     </script>
 </body>

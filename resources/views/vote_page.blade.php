@@ -6,8 +6,8 @@
     <p class="lead">Stem op jouw favoriete foto!</p>
     @forelse ($participants as $participant)
         <div class="thumbnail pull-left">
-            <a href="{{ url($participant->image_path) }}" target="_blank" data-toggle="tooltip" title="Open in een nieuw venster">
-                <img src="{{ asset($participant->image_path) }}" alt="{{ $participant->name }}">
+            <a href="{{ url('storage/' . $participant->image_path) }}" target="_blank" data-toggle="tooltip" title="Open in een nieuw venster">
+                <img src="{{ asset('storage/' . $participant->image_path) }}" alt="{{ $participant->name }}">
             </a>
             <div class="caption pull-left">
                 <small>{{ $participant->name }}</small>
