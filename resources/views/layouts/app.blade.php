@@ -61,5 +61,6 @@
                 trigger : 'hover'
             });
         });
+    </script>
 </body>
 </html>
