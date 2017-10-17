@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Illuminate\Database\QueryException;
 use Carbon\Carbon;
 use App\Participant;
 use App\Term;
@@ -117,22 +118,30 @@ class PageController extends Controller
     }
 
     public function store_participant(FormBuilder $formBuilder, Request $request) {
-        $form = $formBuilder->create(\App\Forms\ParticipantForm::class);
+        try {
+            $form = $formBuilder->create(\App\Forms\ParticipantForm::class);
 
-        if(!$form->isValid()) {
-            return redirect()->back()->withErrors($form->getErrors())->withInput();
+            if(!$form->isValid()) {
+                return redirect()->back()->withErrors($form->getErrors())->withInput();
+            }
+
+            $participant = new Participant($request->all());
+            $path = $request->file('image')->store('uploads', 'uploads');
+            $participant->image_path = $path;
+            $participant->ip = $request->ip();
+            $participant->votes = 0;
+            $participant->term = config('global.current_term');
+
+            $participant->save();
+
+            return redirect()->back()->with('success', 'Je deelname is bevestigd!');
         }
-
-        $participant = new Participant($request->all());
-        $path = $request->file('image')->store('uploads', 'uploads');
-        $participant->image_path = $path;
-        $participant->ip = $request->ip();
-        $participant->votes = 0;
-        $participant->term = config('global.current_term');
-
-        $participant->save();
-
-        return redirect()->back()->with('success', 'Je deelname is bevestigd!');
+        catch(QueryException $e){
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == 1062){
+                return redirect()->back()->with('success', 'Je deelname is bevestigd!');
+            }
+        }
     }
 
     public function delete_participant(Participant $participant, Request $request) {

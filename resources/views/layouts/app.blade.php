@@ -54,7 +54,8 @@
         </div>
     </nav>
     @yield('main')
-    <!-- Inline scripts -->
+
+    <!-- Inline script -->
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip({
