@@ -11,6 +11,9 @@
 
     <title>{{ config('app.name') }} | @yield('title')</title>
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/override.css') }}" rel="stylesheet">
@@ -31,7 +34,7 @@
                     <a href="{{ route('participate') }}" {{ Route::is('participate') ? 'class=active' : null }}>Deelnemen</a>
                 </li>
                 <li>
-                    <a href="{{ route('vote_page') }}" {{ Route::is('vote_page') ? 'class=active' : null }}>Stem</a>
+                    <a href="{{ route('vote') }}" {{ Route::is('vote') ? 'class=active' : null }}>Stem</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -51,14 +54,12 @@
         </div>
     </nav>
     @yield('main')
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <!-- Inline scripts -->
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip({
                 trigger : 'hover'
-            })
+            });
         });
-    </script>
 </body>
 </html>

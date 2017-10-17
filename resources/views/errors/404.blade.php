@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Deelnemen')
+@section('title', 'Error 404')
 
 @section('content')
-    {!! form($form) !!}
+    <h1>404 :(</h1>
 @endsection

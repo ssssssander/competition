@@ -16,7 +16,7 @@ Route::get('/', 'PageController@index')->name('index');
 Route::get('/home', 'PageController@home')->name('home');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', 'PageController@dashboard')->name('dashboard')->middleware('auth');
+    Route::get('/dashboard', 'PageController@dashboard')->name('dashboard');
 
     Route::get('/dashboard/delete_participant/{participant}', 'PageController@delete_participant')->name('delete_participant');
 
@@ -30,13 +30,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 
-Route::get('/vote', 'PageController@vote_page')->name('vote_page');
+Route::get('/vote', 'PageController@vote')->name('vote');
 
-Route::get('/vote/{participant}', 'PageController@vote')->name('vote');
+Route::get('/vote/increment_vote/{participant}', 'PageController@increment_vote')->name('increment_vote');
 
 Route::get('/participate', 'PageController@participate')->name('participate');
 
-Route::post('/participate/store', 'PageController@store_participant')->name('store_participant');
+Route::post('/participate/store_participant', 'PageController@store_participant')->name('store_participant');
 
 
 // Auth::routes() but without registration routes

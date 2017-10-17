@@ -3,12 +3,6 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    @if (session()->has('delete_participant_success'))
-        <div class="alert alert-success alert-dismissable fade in">
-          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-          {!! session('delete_participant_success') !!}
-        </div>
-    @endif
     <div class="pull-left">
         <p>{{ $participantsCount }} @if($participantsCount > 1) deelnemers @else deelnemer @endif</p>
         <p>Huidige periode: {{ config('global.current_term') }}</p>

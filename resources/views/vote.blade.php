@@ -13,7 +13,7 @@
                 <small>{{ $participant->name }}</small>
                 <p>{{ $participant->votes }} @if($participant->votes == 1) stem @else stemmen @endif</p>
             </div>
-            <a href="{{ route('vote', ['participant' => $participant]) }}" alt="Stem" class="pull-right" data-toggle="tooltip" title="Stem op deze foto" style="background-image: url('../images/vote.png')"></a>
+            <a href="{{ route('increment_vote', ['participant' => $participant]) }}" alt="Stem" class="pull-right" data-toggle="tooltip" title="Stem op deze foto" style="background-image: url('../images/vote.png')"></a>
         </div>
     @empty
         <p class="lead">Geen deelnemers :(</p>

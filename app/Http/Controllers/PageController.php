@@ -80,7 +80,7 @@ class PageController extends Controller
         $terms = Term::all();
         $iteration = 1;
 
-        if (!$form->isValid()) {
+        if(!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
@@ -92,19 +92,19 @@ class PageController extends Controller
             $iteration++;
         }
 
-        return redirect()->back()->with('edit_terms_success', 'Periodes gewijzigd');
+        return redirect()->back()->with('success', 'Periodes gewijzigd');
     }
 
-    public function vote_page(Request $request) {
+    public function vote(Request $request) {
         $participants = Participant::all();
 
-        return view('vote_page', compact('participants'));
+        return view('vote', compact('participants'));
     }
 
-    public function vote(Participant $participant, Request $request) {
+    public function increment_vote(Participant $participant, Request $request) {
         $participant->increment('votes');
 
-        return redirect()->back();
+        return redirect()->back()->with('success', "Gestemd op <strong>{$participant->name}</strong>");;
     }
 
     public function participate(FormBuilder $formBuilder, Request $request) {
@@ -119,7 +119,7 @@ class PageController extends Controller
     public function store_participant(FormBuilder $formBuilder, Request $request) {
         $form = $formBuilder->create(\App\Forms\ParticipantForm::class);
 
-        if (!$form->isValid()) {
+        if(!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
@@ -132,14 +132,12 @@ class PageController extends Controller
 
         $participant->save();
 
-        $request->session()->put('store_participant_success', 'Je deelname is bevestigd!');
-
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Je deelname is bevestigd!');
     }
 
     public function delete_participant(Participant $participant, Request $request) {
         $participant->delete();
 
-        return redirect()->back()->with('delete_participant_success', "Deelnemer <strong>{$participant->name}</strong> verwijderd");
+        return redirect()->back()->with('success', "Deelnemer <strong>{$participant->name}</strong> verwijderd");
     }
 }
