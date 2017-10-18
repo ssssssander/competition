@@ -20,7 +20,7 @@ class CheckCompetitionStatus
 
         if($currentTermNr == 0) {
             return redirect()->back()->with(
-                ['message' => 'De wedstrijd is voorbij!', 'message-type' => 'warning']
+                ['message' => 'De wedstrijd is voorbij!', 'message-type' => 'danger']
             );
         }
 

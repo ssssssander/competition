@@ -199,7 +199,9 @@ class PageController extends Controller
         catch(QueryException $e){
             $errorCode = $e->errorInfo[1];
             if($errorCode == 1062){
-                return redirect()->back()->with('message', 'Je deelname is bevestigd!');
+                return redirect()->back()->with(
+                    ['message' => 'Je deelname is bevestigd!', 'message-type' => 'success']
+                );
             }
         }
     }
@@ -208,6 +210,7 @@ class PageController extends Controller
         $participant->delete();
 
         return redirect()->back()->with(
-            ['message' => "Deelnemer <strong>{$participant->name}</strong> verwijderd", 'message-type' => 'success']);
+            ['message' => "Deelnemer <strong>{$participant->name}</strong> verwijderd", 'message-type' => 'success']
+        );
     }
 }
