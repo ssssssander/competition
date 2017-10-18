@@ -4,12 +4,13 @@
 
 @section('content')
     <div class="pull-left">
-        <p>{{ $participantsCount }} @if($participantsCount > 1) deelnemers @else deelnemer @endif</p>
-        <p>Huidige periode: {{ config('global.current_term') }}</p>
+        <p>{{ $participantsCount }} {{ ($participantsCount > 1 || $participantsCount == 0) ? 'deelnemers' : 'deelnemer' }}</p>
+        <p>{{ $currentTermNr == 0 ? 'De wedstrijd is voorbij!' : 'Huidige periode:' . $currentTermNr }}</p>
     </div>
     <div class="pull-right">
         <a href="{{ route('terms') }}" class="btn btn-lg btn-default text-uppercase">Wijzig periodes</a>
-        <a href="{{ route('export') }}" class="btn btn-lg btn-default text-uppercase">Exporteer naar Excel</a>
+        <a href="{{ route('export_participants') }}" class="btn btn-lg btn-default text-uppercase">Exporteer naar Excel</a>
+        <a href="{{ route('reset') }}" class="btn btn-lg btn-danger text-uppercase">Reset wedstrijd</a>
     </div>
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>

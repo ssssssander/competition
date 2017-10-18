@@ -5,6 +5,7 @@
 @section('main')
     <div class="container">
         <div class="jumbotron">
+            @include('includes.message')
             <a href="{{ route('participate') }}" class="btn btn-lg btn-default btn-block text-uppercase" role="button">Neem nu deel</a>
             <div class="row">
                 <div class="col-md-8">
@@ -21,19 +22,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="list-group">
-                        @foreach ($terms as $term)
-                            <li class="list-group-item">Week {{ $term->term }}:
-                                <time datetime="{{ $term->start }}"></time>{{ $term->start }} tot
-                                <time datetime="{{ $term->end }}"></time>{{ $term->end }}
+                        @for ($i = 0; $i < count($terms); $i++)
+                            <li class="list-group-item {{ $terms[$i]->term == $currentTermNr ? 'active' : '' }}">
+                                Week {{ $terms[$i]->term }}:
+                                <time datetime="{{ $terms[$i]->start }}"></time>{{ $terms[$i]->start }} tot
+                                <time datetime="{{ $terms[$i]->end }}"></time>{{ $terms[$i]->end }}
                                 <strong class="pull-right">Winnaar:
-                                    @if ($winner->term == $term->term)
-                                        {{ $winner['name'] }}
-                                    @else
-                                        ???
-                                    @endif
+                                    {{ array_key_exists($i, $winnersRightOrder) ? $winnersRightOrder[$i] : '???' }}
                                 </strong>
                             </li>
-                        @endforeach
+                        @endfor
                     </ul>
                 </div>
             </div>

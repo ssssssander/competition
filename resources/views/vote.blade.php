@@ -3,8 +3,8 @@
 @section('title', 'Stem')
 
 @section('content')
-    <p class="lead">Stem op jouw favoriete foto!</p>
-    @forelse ($participants as $participant)
+    @forelse ($participantsFromThisTerm as $participant)
+        <p class="lead">Stem op jouw favoriete foto!</p>
         <div class="thumbnail pull-left">
             <a href="{{ url('storage/' . $participant->image_path) }}" target="_blank" data-toggle="tooltip" title="Open in een nieuw venster">
                 <img src="{{ asset('storage/' . $participant->image_path) }}" alt="{{ $participant->name }}">

@@ -3,8 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Carbon\Carbon;
-use DB;
+use Illuminate\Support\Facades\Storage;
 use App\Participant;
 use App\Term;
 
@@ -41,24 +40,28 @@ class EndTerm extends Command
      */
     public function handle()
     {
-        // Pick winner
-        $participants = Participant::all();
-        $terms = Term::all();
-        $currentTermNr = config('global.current_term');
-        $currentTerm = Term::find($currentTermNr);
-        $winner = Participant::where('term', $currentTermNr)->orderBy('votes', 'desc')->first();
+        $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
 
-        $currentTerm->winner_participant_id = $winner->id;
-        $currentTerm->save();
+        if($currentTermNr != 0) {
+            // Pick winner
+            $terms = Term::all();
+            $currentTerm = Term::find($currentTermNr);
+            $winner = Participant::where('term', $currentTermNr)->orderBy('votes', 'desc')->first();
 
-        // Determine next term
+            $currentTerm->winner_participant_id = is_null($winner) ? null : $winner->id;
+            $currentTerm->save();
 
-        // $now = new Carbon();
+            // Progress to the next term
+            $nextTermNr = $currentTermNr + 1;
 
-        // foreach($terms as $term) {
-        //     if($now->between(new Carbon($term->start), new Carbon($term->end))) {
-        //         //
-        //     }
-        // }
+            if($nextTermNr > count($terms)) {
+                $nextTermNr = 0;
+            }
+
+            Storage::put(config('globals.current_term_nr_filename'), $nextTermNr);
+        }
+        else {
+            echo 'De wedstrijd is voorbij!' . "\r\n";
+        }
     }
 }

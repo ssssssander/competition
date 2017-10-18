@@ -24,20 +24,22 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post('/dashboard/terms/edit_terms', 'PageController@edit_terms')->name('edit_terms');
 
-    Route::get('/dashboard/export', 'PageController@export')->name('export');
+    Route::get('/dashboard/export_participants', 'PageController@export_participants')->name('export_participants');
+
+    Route::get('/dashboard/reset', 'PageController@reset')->name('reset');
 
     Route::get('/logout', 'PageController@logout')->name('logout');
 });
 
+Route::middleware(['ongoing'])->group(function () {
+    Route::get('/vote', 'PageController@vote')->name('vote');
 
-Route::get('/vote', 'PageController@vote')->name('vote');
+    Route::get('/vote/increment_vote/{participant}', 'PageController@increment_vote')->name('increment_vote');
 
-Route::get('/vote/increment_vote/{participant}', 'PageController@increment_vote')->name('increment_vote');
+    Route::get('/participate', 'PageController@participate')->name('participate');
 
-Route::get('/participate', 'PageController@participate')->name('participate');
-
-Route::post('/participate/store_participant', 'PageController@store_participant')->name('store_participant');
-
+    Route::post('/participate/store_participant', 'PageController@store_participant')->name('store_participant');
+});
 
 // Auth::routes() but without registration routes
 
