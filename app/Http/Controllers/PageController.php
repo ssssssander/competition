@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use App\Participant;
 use App\Term;
+use App\User;
 use Excel;
 
 class PageController extends Controller

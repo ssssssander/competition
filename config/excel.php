@@ -63,7 +63,7 @@ return array(
         'title'          => 'Deelnemers Iron Maiden wedstrijd',
         'description'    => 'Deelnemers van de Iron Maiden wedstrijd',
         'subject'        => 'Spreadsheet export',
-        'keywords'       => '',
+        'keywords'       => 'Iron Maiden',
         'category'       => 'Excel',
         'manager'        => 'Iron Maiden',
         'company'        => 'Iron Maiden',

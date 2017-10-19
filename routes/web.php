@@ -11,6 +11,8 @@
 |
 */
 
+use App\Mail\TermEnded;
+
 Route::get('/', 'PageController@index')->name('index');
 
 Route::get('/home', 'PageController@home')->name('home');
@@ -39,6 +41,10 @@ Route::middleware(['ongoing'])->group(function () {
     Route::get('/participate', 'PageController@participate')->name('participate');
 
     Route::post('/participate/store_participant', 'PageController@store_participant')->name('store_participant');
+});
+
+Route::get('/mailable', function () {
+    return new TermEnded();
 });
 
 // Auth::routes() but without registration routes
