@@ -7,30 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use Kris\LaravelFormBuilder\FormBuilder;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
 use App\Participant;
 use App\Term;
-use App\User;
 use Excel;
 
 class PageController extends Controller
 {
     public function index(Request $request) {
-        // $term = new Term();
-        // $term->term = 1;
-        // $term->start = Carbon::create(2017, 12, 1, 0, 0, 0);
-        // $term->end = Carbon::create(2017, 12, 1, 0, 0, 0)->addWeek()->subSecond();
-        // $term->term = 2;
-        // $term->start = Carbon::create(2017, 12, 8, 0, 0, 0);
-        // $term->end = Carbon::create(2017, 12, 8, 0, 0, 0)->addWeek()->subSecond();
-        // $term->term = 3;
-        // $term->start = Carbon::create(2017, 12, 15, 0, 0, 0);
-        // $term->end = Carbon::create(2017, 12, 15, 0, 0, 0)->addWeek()->subSecond();
-        // $term->term = 4;
-        // $term->start = Carbon::create(2017, 12, 21, 0, 0, 0);
-        // $term->end = Carbon::create(2017, 12, 21, 0, 0, 0)->addWeek()->subSecond();
-        // $term->save();
-
         $terms = Term::all();
         $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
 

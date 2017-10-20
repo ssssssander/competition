@@ -16,7 +16,7 @@ class TermEnded extends Mailable
 
     public $currentTermNr;
     public $nextTermNr;
-    public $winner;
+    public $winnerName;
 
     /**
      * Create a new message instance.
@@ -33,7 +33,14 @@ class TermEnded extends Mailable
 
         $winner = Participant::where('term', $this->currentTermNr)->orderBy('votes', 'desc')->first();
 
-        $this->winner = $winner;
+        if(is_null($winner)) {
+            $winnerName = 'GEEN WINNAAR';
+        }
+        else {
+            $winnerName = $winner->name;
+        }
+
+        $this->winnerName = $winnerName;
     }
 
     /**

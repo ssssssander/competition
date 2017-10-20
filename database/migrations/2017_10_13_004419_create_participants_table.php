@@ -19,7 +19,7 @@ class CreateParticipantsTable extends Migration
             $table->string('address', 100);
             $table->string('city', 100);
             $table->string('email', 100)->unique();
-            $table->string('ip')->unique();
+            $table->string('ip');
             $table->timestamps();
             $table->softDeletes();
         });

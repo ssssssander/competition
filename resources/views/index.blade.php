@@ -28,7 +28,7 @@
                                 <time datetime="{{ $terms[$i]->start }}"></time>{{ $terms[$i]->start }} tot
                                 <time datetime="{{ $terms[$i]->end }}"></time>{{ $terms[$i]->end }}
                                 <strong class="pull-right">Winnaar:
-                                    {{ array_key_exists($i, $winnersRightOrder) ? $winnersRightOrder[$i] : '???' }}
+                                    {{ $winnersRightOrder[$i] }}
                                 </strong>
                             </li>
                         @endfor
