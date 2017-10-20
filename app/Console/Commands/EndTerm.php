@@ -4,8 +4,11 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TermEnded;
 use App\Participant;
 use App\Term;
+use App\User;
 
 class EndTerm extends Command
 {
@@ -50,6 +53,9 @@ class EndTerm extends Command
 
             $currentTerm->winner_participant_id = is_null($winner) ? null : $winner->id;
             $currentTerm->save();
+
+            // Send email
+            Mail::to(User::findOrFail(1))->send(new TermEnded());
 
             // Progress to the next term
             $nextTermNr = $currentTermNr + 1;
