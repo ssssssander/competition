@@ -55,7 +55,7 @@ class EndTerm extends Command
             $currentTerm->save();
 
             // Send email
-            Mail::to(User::findOrFail(1))->send(new TermEnded());
+            // Mail::to(User::findOrFail(1))->send(new TermEnded());
 
             // Progress to the next term
             $nextTermNr = $currentTermNr + 1;

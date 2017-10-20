@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Storage;
+use App\Term;
 
 class Kernel extends ConsoleKernel
 {
@@ -24,6 +26,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
+        // $currentTerm = Term::find($currentTermNr);
+
+        // $currentTermStart = $currentTerm->start;
+        // $currentTermEnd = $currentTerm->end;
+
         $schedule->command('term:end')->everyMinute();
     }
 
