@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="pull-left">
-        <p>{{ $participantsCount }} {{ ($participantsCount > 1 || $participantsCount == 0) ? 'deelnemers' : 'deelnemer' }}</p>
+        <p>{{ $participantCount }} {{ ($participantCount > 1 || $participantCount == 0) ? 'deelnemers' : 'deelnemer' }}</p>
         <p>{{ $currentTermNr == 0 ? 'De wedstrijd is voorbij!' : 'Huidige periode: ' . $currentTermNr }}</p>
     </div>
     <div class="pull-right">

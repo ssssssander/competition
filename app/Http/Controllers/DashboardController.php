@@ -11,10 +11,10 @@ class DashboardController extends Controller
 {
     public function dashboard(Request $request) {
         $participants = Participant::all();
-        $participantsCount = Participant::all()->count();
+        $participantCount = Participant::count();
         $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
 
-        return view('dashboard', compact('participants', 'participantsCount', 'currentTermNr'));
+        return view('dashboard', compact('participants', 'participantCount', 'currentTermNr'));
     }
 
     public function reset(Request $request) {

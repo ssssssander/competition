@@ -47,7 +47,7 @@ class EndTerm extends Command
 
         if($currentTermNr != 0) {
             // Pick winner
-            $terms = Term::all();
+            $termCount = Term::count();
             $currentTerm = Term::find($currentTermNr);
             $winner = Participant::where('term', $currentTermNr)->orderBy('votes', 'desc')->first();
 
@@ -55,12 +55,12 @@ class EndTerm extends Command
             $currentTerm->save();
 
             // Send email
-            // Mail::to(User::findOrFail(1))->send(new TermEnded());
+            // Mail::to(User::find(1))->send(new TermEnded());
 
             // Progress to the next term
             $nextTermNr = $currentTermNr + 1;
 
-            if($nextTermNr > count($terms)) {
+            if($nextTermNr > $termCount) {
                 $nextTermNr = 0;
             }
 

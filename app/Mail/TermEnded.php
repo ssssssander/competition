@@ -9,14 +9,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Storage;
 use App\Participant;
 use App\Term;
+use App\User;
 
 class TermEnded extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $adminName;
     public $currentTermNr;
     public $nextTermNr;
-    public $winnerName;
+    public $winner;
 
     /**
      * Create a new message instance.
@@ -25,22 +27,15 @@ class TermEnded extends Mailable
      */
     public function __construct()
     {
-
-        $this->currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename')) - 1;
+        $this->adminName = User::find(1)->name;
+        $this->currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
         $this->nextTermNr = $this->currentTermNr + 1;
 
         $currentTerm = Term::find($this->currentTermNr);
 
         $winner = Participant::where('term', $this->currentTermNr)->orderBy('votes', 'desc')->first();
 
-        if(is_null($winner)) {
-            $winnerName = 'GEEN WINNAAR';
-        }
-        else {
-            $winnerName = $winner->name;
-        }
-
-        $this->winnerName = $winnerName;
+        $this->winner = $winner;
     }
 
     /**
