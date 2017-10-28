@@ -67,7 +67,7 @@ class EndTerm extends Command
             Storage::put(config('globals.current_term_nr_filename'), $nextTermNr);
         }
         else {
-            echo 'De wedstrijd is voorbij!' . "\r\n";
+            $this->info('De wedstrijd is voorbij!');
         }
     }
 }

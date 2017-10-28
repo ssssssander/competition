@@ -12,6 +12,7 @@
 */
 
 use App\Mail\TermEnded;
+use App\Mail\ParticipantsExcel;
 
 Route::get('/', 'IndexController@index')->name('index');
 
@@ -43,8 +44,12 @@ Route::middleware(['ongoing'])->group(function () {
     Route::post('/participate/store_participant', 'ParticipantController@store_participant')->name('store_participant');
 });
 
-Route::get('/mailable', function () {
+Route::get('/term_ended', function () {
     return new TermEnded();
+});
+
+Route::get('/participants_excel', function () {
+    return new ParticipantsExcel();
 });
 
 // Auth::routes() but without registration routes

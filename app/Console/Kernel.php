@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         \App\Console\Commands\EndTerm::class,
+        \App\Console\Commands\SendExcel::class,
     ];
 
     /**
@@ -26,13 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
-        // $currentTerm = Term::find($currentTermNr);
-
-        // $currentTermStart = $currentTerm->start;
-        // $currentTermEnd = $currentTerm->end;
-
         $schedule->command('term:end')->everyMinute();
+        $schedule->command('excel:send')->dailyAt('23:59');
     }
 
     /**
