@@ -13,7 +13,11 @@
                 <small>{{ $participant->name }}</small>
                 <p>{{ $participant->votes }} @if($participant->votes == 1) stem @else stemmen @endif</p>
             </div>
-            <a href="{{ route('increment_vote', ['participant' => $participant]) }}" alt="Stem" class="pull-right" data-toggle="tooltip" title="Stem op deze foto" style="background-image: url('../images/vote.png')"></a>
+            @if ($vote->where('ip', $ip)->where('participant_id', $participant->id)->count() >= 1)
+                <span class="pull-right" data-toggle="tooltip" title="Je hebt op deze foto gestemd"></span>
+            @else
+                <a href="{{ route('increment_vote', ['participant' => $participant]) }}" class="pull-right" data-toggle="tooltip" title="Stem op deze foto"></a>
+            @endif
         </div>
     @empty
         <p class="lead">Geen deelnemers :(</p>

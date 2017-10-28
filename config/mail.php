@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'mailgun@sander.borret.mtantwerp.eu'),
+        'address' => env('MAIL_FROM_ADDRESS', 'postmaster@sander.borret.mtantwerp.eu'),
         'name' => env('MAIL_FROM_NAME', 'Iron Maiden Wedstrijd'),
     ],
 

@@ -11,6 +11,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "kris/laravel-form-builder": "^1.13",
         "laravel/framework": "5.5.*",
+        "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "maatwebsite/excel": "~2.1.0"
     },

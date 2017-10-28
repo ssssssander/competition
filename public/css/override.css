@@ -43,12 +43,18 @@ body {
     width: auto;
     max-width: 200px;
 }
-.thumbnail .caption + a {
+.thumbnail .caption + a, .thumbnail .caption + span{
     width: 48px;
     height: 48px;
 }
+.thumbnail .caption + a {
+    background-image: url('../images/vote.png');
+}
+.thumbnail .caption + span {
+    background-image: url('../images/voted.png');
+}
 .thumbnail .caption + a:hover {
-    background-image: url('../images/voted.png') !important;
+    background-image: url('../images/voted.png');
 }
 .table tbody tr td {
      vertical-align: middle;

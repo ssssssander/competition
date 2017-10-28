@@ -10,4 +10,8 @@ class Participant extends Model
     use SoftDeletes;
 
     protected $fillable = ['name', 'address', 'city', 'email'];
+
+    public function votes() {
+        return $this->hasMany('App\Vote');
+    }
 }
