@@ -41,7 +41,7 @@ body {
 .thumbnail a img {
     height: 200px;
     width: auto;
-    max-width: 200px;
+    max-width: 300px;
 }
 .thumbnail .caption + a, .thumbnail .caption + span{
     width: 48px;
@@ -52,6 +52,9 @@ body {
 }
 .thumbnail .caption + span {
     background-image: url('../images/voted.png');
+}
+.thumbnail .caption + span.own {
+    background-image: url('../images/vote.png');
 }
 .thumbnail .caption + a:hover {
     background-image: url('../images/voted.png');

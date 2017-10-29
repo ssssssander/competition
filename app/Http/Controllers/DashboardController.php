@@ -28,11 +28,6 @@ class DashboardController extends Controller
             $participant->delete();
         }
 
-        foreach($terms as $term) {
-            $term->winner_participant_id = null;
-            $term->save();
-        }
-
         Storage::put(config('globals.current_term_nr_filename'), 1);
         Storage::put(config('globals.term_interval_filename'), 'weekly');
 

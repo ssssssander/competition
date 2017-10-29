@@ -23,7 +23,7 @@ class VoteController extends Controller
         $ip = $request->ip();
         $hasVotedOnParticipant = $vote->where('ip', $ip)->where('participant_id', $participant->id)->count() >= 1;
 
-        if(!$hasVotedOnParticipant) {
+        if(!$hasVotedOnParticipant && !($participant->ip == $ip)) {
             $vote->ip = $ip;
             $vote->participant_id = $participant->id;
 

@@ -15,6 +15,8 @@
             </div>
             @if ($vote->where('ip', $ip)->where('participant_id', $participant->id)->count() >= 1)
                 <span class="pull-right" data-toggle="tooltip" title="Je hebt op deze foto gestemd"></span>
+            @elseif ($participant->ip == $ip)
+                <span class="pull-right own" data-toggle="tooltip" title="Je kan niet op jezelf stemmen"></span>
             @else
                 <a href="{{ route('increment_vote', ['participant' => $participant]) }}" class="pull-right" data-toggle="tooltip" title="Stem op deze foto"></a>
             @endif
