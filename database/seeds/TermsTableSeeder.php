@@ -16,23 +16,23 @@ class TermsTableSeeder extends Seeder
         DB::table('terms')->insert([
         [
             'term' => 1,
-            'start' => Carbon::create(2017, 12, 1),
-            'end' => Carbon::create(2017, 12, 1)->addWeek()
+            'start' => Carbon::create(2017, 12, 1)->toDateString(),
+            'end' => Carbon::create(2017, 12, 1)->addWeek()->toDateString()
         ],
         [
             'term' => 2,
-            'start' => Carbon::create(2017, 12, 8),
-            'end' => Carbon::create(2017, 12, 8)->addWeek()
+            'start' => Carbon::create(2017, 12, 8)->toDateString(),
+            'end' => Carbon::create(2017, 12, 8)->addWeek()->toDateString()
         ],
         [
             'term' => 3,
-            'start' => Carbon::create(2017, 12, 15),
-            'end' => Carbon::create(2017, 12, 15)->addWeek()
+            'start' => Carbon::create(2017, 12, 15)->toDateString(),
+            'end' => Carbon::create(2017, 12, 15)->addWeek()->toDateString()
         ],
         [
             'term' => 4,
-            'start' => Carbon::create(2017, 12, 21),
-            'end' => Carbon::create(2017, 12, 21)->addWeek()
+            'start' => Carbon::create(2017, 12, 21)->toDateString(),
+            'end' => Carbon::create(2017, 12, 21)->addWeek()->toDateString()
         ]]);
     }
 }

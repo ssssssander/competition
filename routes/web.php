@@ -44,11 +44,11 @@ Route::middleware(['ongoing'])->group(function () {
     Route::post('/participate/store_participant', 'ParticipantController@store_participant')->name('store_participant');
 });
 
-Route::get('/term_ended', function () {
+Route::get('/a', function () {
     return new TermEnded();
 });
 
-Route::get('/participants_excel', function () {
+Route::get('/b', function () {
     return new ParticipantsExcel();
 });
 

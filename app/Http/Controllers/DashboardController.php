@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Participant;
 use App\Term;
+use Artisan;
 
 class DashboardController extends Controller
 {
@@ -33,6 +34,9 @@ class DashboardController extends Controller
         }
 
         Storage::put(config('globals.current_term_nr_filename'), 1);
+        Storage::put(config('globals.term_interval_filename'), 'weekly');
+
+        Artisan::call('migrate:refresh', ['--seed' => 'default']);
 
         return redirect()->back()->with(
             ['message' => 'Wedstrijd gereset', 'message-type' => 'success']

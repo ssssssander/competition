@@ -45,7 +45,7 @@ class IndexController extends Controller
             }
         }
 
-        return view('index', compact('terms', 'winnersRightOrder', 'currentTermNr'));
+        return view('index', compact('terms', 'winnersRightOrder', 'currentTermNr', 'termCount'));
     }
 
     public function home(Request $request) {

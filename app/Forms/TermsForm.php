@@ -24,8 +24,8 @@ class TermsForm extends Form
             'errors' => ['class' => 'text-danger']
         ])
         ->add('term_amount', 'number', [
-            'rules' => 'required|min:1|numeric',
-            'label' => 'Aantal perioden',
+            'rules' => 'required|min:2|numeric',
+            'label' => 'Aantal periodes',
             'value' => Term::count(),
             'errors' => ['class' => 'text-danger']
         ])

@@ -12,6 +12,9 @@ use Excel;
 class ParticipantController extends Controller
 {
     public function participate(FormBuilder $formBuilder, Request $request) {
+        $ip = $request->ip();
+        $hasParticipated = Participant::where('ip', $ip)->exists();
+
         $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
 
         $form = $formBuilder->create(\App\Forms\ParticipantForm::class, [
@@ -19,11 +22,17 @@ class ParticipantController extends Controller
             'url' => route('store_participant')
         ]);
 
-        return view('participate', compact('form'));
+        return view('participate', compact('form', 'hasParticipated'));
     }
 
     public function store_participant(FormBuilder $formBuilder, Request $request) {
+        $ip = $request->ip();
         $currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
+        $hasParticipated = Participant::where('ip', $ip)->exists();
+
+        if($hasParticipated) {
+            return redirect()->back();
+        }
 
         try {
             $form = $formBuilder->create(\App\Forms\ParticipantForm::class);
@@ -35,22 +44,18 @@ class ParticipantController extends Controller
             $participant = new Participant($request->all());
             $path = $request->file('image')->store('uploads');
             $participant->image_path = $path;
-            $participant->ip = $request->ip();
+            $participant->ip = $ip;
             $participant->votes = 0;
             $participant->term = $currentTermNr;
 
             $participant->save();
 
-            return redirect()->back()->with(
-                ['message' => 'Je deelname is bevestigd!', 'message-type' => 'success']
-            );
+            return redirect()->back();
         }
         catch(QueryException $e){
             $errorCode = $e->errorInfo[1];
             if($errorCode == 1062){
-                return redirect()->back()->with(
-                    ['message' => 'Je deelname is bevestigd!', 'message-type' => 'success']
-                );
+                return redirect()->back();
             }
         }
     }
