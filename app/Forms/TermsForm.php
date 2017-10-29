@@ -4,6 +4,7 @@ namespace App\Forms;
 
 use Kris\LaravelFormBuilder\Form;
 use Illuminate\Support\Facades\Storage;
+use App\Term;
 
 class TermsForm extends Form
 {
@@ -11,15 +12,21 @@ class TermsForm extends Form
     {
         $this->add('term_interval', 'select', [
             'choices' => [
-                'hourly' => 'Ieder uur',
                 'daily' => 'Dagelijks',
                 'weekly' => 'Wekelijks',
                 'monthly' => 'Maandelijks',
                 'quarterly' => 'Driemaandelijks',
                 'yearly' => 'Jaarlijks'
             ],
+            'rules' => 'required|in:daily,weekly,monthly,quarterly,yearly',
             'selected' => Storage::get(config('globals.term_interval_filename')),
             'label' => 'Periode-interval',
+            'errors' => ['class' => 'text-danger']
+        ])
+        ->add('term_amount', 'number', [
+            'rules' => 'required|min:1|numeric',
+            'label' => 'Aantal perioden',
+            'value' => Term::count(),
             'errors' => ['class' => 'text-danger']
         ])
         ->add('submit', 'submit', [

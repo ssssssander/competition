@@ -30,7 +30,6 @@ class Kernel extends ConsoleKernel
         $termInterval = Storage::get(config('globals.term_interval_filename'));
 
         switch($termInterval) {
-            case 'hourly': $schedule->command('term:end')->hourly(); break;
             case 'daily': $schedule->command('term:end')->daily(); break;
             case 'weekly': $schedule->command('term:end')->weekly(); break;
             case 'monthly': $schedule->command('term:end')->monthly(); break;
