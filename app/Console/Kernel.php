@@ -27,7 +27,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('term:end')->everyMinute();
+        $termInterval = Storage::get(config('globals.term_interval_filename'));
+
+        switch($termInterval) {
+            case 'hourly': $schedule->command('term:end')->hourly(); break;
+            case 'daily': $schedule->command('term:end')->daily(); break;
+            case 'weekly': $schedule->command('term:end')->weekly(); break;
+            case 'monthly': $schedule->command('term:end')->monthly(); break;
+            case 'quarterly': $schedule->command('term:end')->quarterly(); break;
+            case 'yearly': $schedule->command('term:end')->yearly(); break;
+            default: $schedule->command('term:end')->weekly(); break;
+        }
+
         $schedule->command('excel:send')->dailyAt('23:59');
     }
 
