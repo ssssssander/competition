@@ -1,12 +1,14 @@
 @component('mail::message')
 # Dag {{ $adminName }}
 
-Periode {{ $currentTermNr }} van de wedstrijd is voorbij, {{ is_null($winner) ? 'er is geen winnaar deze periode' : "de winnaar van deze periode is {$winner->name}" }}, {{ $currentTermNr == 0 ? 'de wedstrijd is voorbij!' : "periode {$nextTermNr} begint nu." }}
+Periode {{ $currentTermNr }} van de {{ $termCount }} van de wedstrijd is voorbij.<br>
+De winnaar van deze periode is: {{ $winnerName }}.<br>
+{{ $nextTermNr == 0 ? 'De wedstrijd is voorbij!' : "Periode {$nextTermNr} begint nu." }}
 
-@component('mail::button', ['url' => '/'])
+@component('mail::button', ['url' => 'https://competition.sander.borret.mtantwerp.eu'])
 Ga naar de website
 @endcomponent
 
-Bedankt,<br>
+Groetjes,<br>
 {{ config('app.name') }}
 @endcomponent

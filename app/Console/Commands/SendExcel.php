@@ -40,6 +40,6 @@ class SendExcel extends Command
      */
     public function handle()
     {
-        Mail::to(User::find(1))->send(new ParticipantsExcel());
+        Mail::send(new ParticipantsExcel());
     }
 }

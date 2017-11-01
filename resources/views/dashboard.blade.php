@@ -6,7 +6,7 @@
     <div class="pull-left">
         <p>Deelnemers in totaal: {{ $totalParticipantCount }}</p>
         <p>Deelnemers deze periode: {{ $thisTermParticipantCount }}</p>
-        <p>{{ $currentTermNr == 0 ? 'De wedstrijd is voorbij!' : 'Huidige periode: ' . $currentTermNr }}</p>
+        <p>{{ $currentTermNr == 0 ? 'De wedstrijd is voorbij!' : "Huidige periode: {$currentTermNr} van de {$termCount}" }}</p>
     </div>
     <div class="pull-right">
         <a href="{{ route('terms') }}" class="btn btn-lg btn-default text-uppercase">Wijzig periodes</a>

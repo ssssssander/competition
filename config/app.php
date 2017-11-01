@@ -56,7 +56,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://competition.local'),
+    'url' => env('APP_URL', 'https://competition.sander.borret.mtantwerp.eu'),
 
     /*
     |--------------------------------------------------------------------------

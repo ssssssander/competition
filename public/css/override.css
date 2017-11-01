@@ -47,16 +47,10 @@ body {
     width: 48px;
     height: 48px;
 }
-.thumbnail .caption + a {
+.thumbnail .caption + a, .thumbnail .caption + span.own {
     background-image: url('../images/vote.png');
 }
-.thumbnail .caption + span {
-    background-image: url('../images/voted.png');
-}
-.thumbnail .caption + span.own {
-    background-image: url('../images/vote.png');
-}
-.thumbnail .caption + a:hover {
+.thumbnail .caption + span, .thumbnail .caption + a:hover {
     background-image: url('../images/voted.png');
 }
 .table tbody tr td {

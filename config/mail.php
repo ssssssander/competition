@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('MAIL_DRIVER', 'mailgun'),
+    'driver' => env('MAIL_DRIVER', 'sparkpost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.sparkpostmail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'postmaster@sander.borret.mtantwerp.eu'),
+        'address' => env('MAIL_FROM_ADDRESS', 'sparkpost@sander.borret.mtantwerp.eu'),
         'name' => env('MAIL_FROM_NAME', 'Iron Maiden Wedstrijd'),
     ],
 
@@ -118,6 +118,11 @@ return [
         'paths' => [
             resource_path('views/vendor/mail'),
         ],
+    ],
+
+    'to' => [
+        'address' => env('ADMIN_EMAIL'),
+        'name' => env('ADMIN_NAME'),
     ],
 
 ];

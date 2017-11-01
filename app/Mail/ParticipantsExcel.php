@@ -54,6 +54,6 @@ class ParticipantsExcel extends Mailable
             });
         });
 
-        return $this->markdown('emails.participants_excel')->attach($excelFile->store('xlsx', false, true)['full']);
+        return $this->subject('De deelnemers van vandaag')->markdown('emails.participants_excel')->attach($excelFile->store('xlsx', false, true)['full']);
     }
 }

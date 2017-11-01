@@ -3,7 +3,7 @@
 
 In de bijlage vind je een Excelbestand waarin de deelnemers van {{ $dateNow }} staan.
 
-@component('mail::button', ['url' => '/'])
+@component('mail::button', ['url' => 'https://competition.sander.borret.mtantwerp.eu'])
 Ga naar de website
 @endcomponent
 

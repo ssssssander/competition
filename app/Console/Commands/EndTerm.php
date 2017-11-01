@@ -54,20 +54,23 @@ class EndTerm extends Command
             $currentTerm->winner_participant_id = is_null($winner) ? null : $winner->id;
             $currentTerm->save();
 
-            // Send email
-            Mail::to(User::find(1))->send(new TermEnded());
-
-            // Progress to the next term
+            // Check if the competition is finished
             $nextTermNr = $currentTermNr + 1;
 
             if($nextTermNr > $termCount) {
                 $nextTermNr = 0;
             }
 
+            // Send email
+            $adminName = User::find(1)->name;
+            $winnerName = is_null($winner) ? 'er is geen winnaar' : $winner->name;
+            Mail::send(new TermEnded($adminName, $winnerName, $currentTermNr, $nextTermNr, $termCount));
+
+            // Progress to the next term
             Storage::put(config('globals.current_term_nr_filename'), $nextTermNr);
         }
         else {
-            $this->info('De wedstrijd is voorbij!');
+            $this->error('The competition is finished');
         }
     }
 }

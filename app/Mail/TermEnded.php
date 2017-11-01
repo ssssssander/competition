@@ -16,26 +16,23 @@ class TermEnded extends Mailable
     use Queueable, SerializesModels;
 
     public $adminName;
+    public $winnerName;
     public $currentTermNr;
     public $nextTermNr;
-    public $winner;
+    public $termCount;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($adminName, $winnerName, $currentTermNr, $nextTermNr, $termCount)
     {
-        $this->adminName = User::find(1)->name;
-        $this->currentTermNr = (int)Storage::get(config('globals.current_term_nr_filename'));
-        $this->nextTermNr = $this->currentTermNr + 1;
-
-        $currentTerm = Term::find($this->currentTermNr);
-
-        $winner = Participant::where('term', $this->currentTermNr)->orderBy('votes', 'desc')->first();
-
-        $this->winner = $winner;
+        $this->adminName = $adminName;
+        $this->winnerName = $winnerName;
+        $this->currentTermNr = $currentTermNr;
+        $this->nextTermNr = $nextTermNr;
+        $this->termCount = $termCount;
     }
 
     /**
@@ -45,6 +42,6 @@ class TermEnded extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.term_ended');
+        return $this->subject('Er is een periode voorbij')->markdown('emails.term_ended');
     }
 }

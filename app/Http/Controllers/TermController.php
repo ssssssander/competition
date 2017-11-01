@@ -45,6 +45,7 @@ class TermController extends Controller
                 case 'monthly': $term->end = $dateNow->addMonth()->toDateString(); break;
                 case 'quarterly': $term->end = $dateNow->addMonths(3)->toDateString(); break;
                 case 'yearly': $term->end = $dateNow->addYear()->toDateString(); break;
+                default: $term->end = $dateNow->addWeek()->toDateString(); break;
             }
             $term->save();
         }
