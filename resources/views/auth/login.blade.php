@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Login voor wedstrijdverantwoordelijke')
+@section('title', 'Admin login')
 
 @section('main')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading text-uppercase">Log in voor wedstrijdverantwoordelijke</div>
+                <div class="panel-heading text-uppercase">Admin login</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">

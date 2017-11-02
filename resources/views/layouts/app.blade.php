@@ -22,35 +22,42 @@
     <nav class="navbar navbar-inverse text-uppercase">
         <div class="container-fluid">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="{{ route('index') }}">
                     <img src="{{ asset('images/logo.png') }}" alt="Iron Maiden logo">
                 </a>
             </div>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="{{ route('index') }}" {{ Route::is('index') ? 'class=active' : null }}>Home</a>
-                </li>
-                <li>
-                    <a href="{{ route('participate') }}" {{ Route::is('participate') ? 'class=active' : null }}>Deelnemen</a>
-                </li>
-                <li>
-                    <a href="{{ route('vote') }}" {{ Route::is('vote') ? 'class=active' : null }}>Stem</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                @if (Auth::check())
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ route('dashboard') }}" {{ Route::is('dashboard') ? 'class=active' : null }}>Dashboard</a>
+                        <a href="{{ route('index') }}" {{ Route::is('index') ? 'class=active' : null }}>Home</a>
                     </li>
                     <li>
-                        <a href="{{ route('logout') }}">Log uit</a>
+                        <a href="{{ route('participate') }}" {{ Route::is('participate') ? 'class=active' : null }}>Deelnemen</a>
                     </li>
-                @else
                     <li>
-                        <a href="{{ route('login') }}" {{ Route::is('login') ? 'class=active' : null }}>Log in</a>
+                        <a href="{{ route('vote') }}" {{ Route::is('vote') ? 'class=active' : null }}>Stem</a>
                     </li>
-                @endif
-            </ul>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Auth::check())
+                        <li>
+                            <a href="{{ route('dashboard') }}" {{ Route::is('dashboard') ? 'class=active' : null }}>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}">Log uit</a>
+                        </li>
+                    @else
+                        <li>
+                            <a href="{{ route('login') }}" {{ Route::is('login') ? 'class=active' : null }}><small>Admin login</small></a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
         </div>
     </nav>
     @yield('main')
