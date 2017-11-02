@@ -11,8 +11,8 @@
 
 ## Additional info
 - The Laravel form builder dependency is vital to this project, don't remove it
-- When a term ends an email will be sent notifying of the term ending to the admin email address
-- Every day at 23:59 an email with an Excel file attached containing all the participants on that day will be sent to the admin email address
+- When a term ends an email will be sent to the admin email address notifying of the term ending
+- Every day at midnight an email will be sent to the admin email address with an Excel file attached containing all the participants on the previous day
 - When you remove a participant, the row is soft deleted
 - When you press the reset button all participants will be hard deleted, terms will be reset to the default, the current term will revert back to 1, and any winners will be removed from all terms. This will essentially give you a clean slate, use with caution.
 - When you edit the terms, the current term will be reverted to 1 and any winners will be removed from all terms

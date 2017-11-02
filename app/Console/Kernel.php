@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
             default: $schedule->command('term:end')->weekly(); break;
         }
 
-        $schedule->command('excel:send')->dailyAt('23:59');
+        $schedule->command('excel:send')->daily();
     }
 
     /**

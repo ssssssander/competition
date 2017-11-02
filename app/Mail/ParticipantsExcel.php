@@ -26,7 +26,7 @@ class ParticipantsExcel extends Mailable
     public function __construct()
     {
         $this->adminName = User::find(1)->name;
-        $this->dateNow = Carbon::now()->toDateString();
+        $this->dateNow = Carbon::now()->subHour()->toDateString();
     }
 
     /**
@@ -36,10 +36,10 @@ class ParticipantsExcel extends Mailable
      */
     public function build()
     {
-        $dateNow = Carbon::now()->toDateString();
+        $dateNow = Carbon::now()->subHour()->toDateString();
 
         $excelFile = Excel::create("deelnemers_{$dateNow}", function($excel) {
-            $dateNow = Carbon::now()->toDateString();
+            $dateNow = Carbon::now()->subHour()->toDateString();
             $excel->sheet("deelnemers_{$dateNow}", function($sheet) {
                 $dateTimeNow = Carbon::now();
                 $dateTimeYesterday = Carbon::now()->subDay();
