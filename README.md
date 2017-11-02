@@ -7,7 +7,7 @@
 4. Run `composer install` in your project root folder to install all the Composer dependencies
 5. Run `php artisan migrate:refresh --seed` in your project root folder to set up your admin account and default terms
 6. If you wish to change the default terms, enter the website and log in using your admin credentials and edit the terms in the dashboard
-7. Run `crontab -e` and add this Cron entry to the end of the file to set up the Laravel scheduler and start the competition: `* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1`, alternatively you may be able to set up a Cronjob in the interface of your hosting service
+7. Run `crontab -e` (or `nano /etc/crontab`) and add this Cron entry to the end of the file to set up the Laravel scheduler and start the competition: `* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1`, alternatively you may be able to set up a Cronjob in the interface of your hosting service
 
 ## Additional info
 - The Laravel form builder dependency is vital to this project, don't remove it
