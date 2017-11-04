@@ -50,7 +50,7 @@
                             <a href="{{ route('dashboard') }}" {{ Route::is('dashboard') ? 'class=active' : null }}>Dashboard</a>
                         </li>
                         <li>
-                            <a>
+                            <a href="#">
                                 {!! Form::open(['route' => 'logout']) !!}
                                 {!! Form::submit('Log uit') !!}
                                 {!! Form::close() !!}

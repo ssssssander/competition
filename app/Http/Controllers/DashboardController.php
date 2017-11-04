@@ -31,7 +31,7 @@ class DashboardController extends Controller
         Storage::put(config('globals.current_term_nr_filename'), 1);
         Storage::put(config('globals.term_interval_filename'), 'weekly');
 
-        Artisan::call('migrate:refresh', ['--seed' => 'default']);
+        Artisan::call('migrate:refresh', ['--seed' => 'default', '--force' => 'default']);
 
         return redirect()->back()->with(
             ['message' => 'Wedstrijd gereset', 'message-type' => 'success']
