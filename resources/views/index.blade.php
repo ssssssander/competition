@@ -25,8 +25,12 @@
                         @for ($i = 0; $i < $termCount; $i++)
                             <li class="list-group-item {{ $terms[$i]->term == $currentTermNr ? 'active' : '' }}">
                                 Periode {{ $terms[$i]->term }}:
-                                <time datetime="{{ $terms[$i]->start }}"></time>{{ $terms[$i]->start }} tot
-                                <time datetime="{{ $terms[$i]->end }}"></time>{{ $terms[$i]->end }}
+                                <time datetime="{{ $terms[$i]->start }}">
+                                    {{ date_format(date_create($terms[$i]->start), 'd-m-Y H:i:s') }}
+                                </time> tot
+                                <time datetime="{{ $terms[$i]->end }}">
+                                    {{ date_format(date_create($terms[$i]->end), 'd-m-Y H:i:s') }}
+                                </time>
                                 <strong class="pull-right">Winnaar:
                                     {{ $winnersRightOrder[$i] }}
                                 </strong>
