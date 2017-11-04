@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/bootbox.min.js') }}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
@@ -49,7 +50,11 @@
                             <a href="{{ route('dashboard') }}" {{ Route::is('dashboard') ? 'class=active' : null }}>Dashboard</a>
                         </li>
                         <li>
-                            <a href="{{ route('logout') }}">Log uit</a>
+                            <a>
+                                {!! Form::open(['route' => 'logout']) !!}
+                                {!! Form::submit('Log uit') !!}
+                                {!! Form::close() !!}
+                            </a>
                         </li>
                     @else
                         <li>

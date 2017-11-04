@@ -18,23 +18,21 @@ Route::get('/home', 'IndexController@home')->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', 'DashboardController@dashboard')->name('dashboard');
 
-    Route::get('/dashboard/delete_participant/{participant}', 'ParticipantController@delete_participant')->name('delete_participant');
+    Route::delete('/dashboard/delete_participant/{participant}', 'ParticipantController@delete_participant')->name('delete_participant');
 
     Route::get('/dashboard/terms', 'TermController@terms')->name('terms');
 
     Route::post('/dashboard/terms/edit_terms', 'TermController@edit_terms')->name('edit_terms');
 
-    Route::get('/dashboard/export_participants', 'ParticipantController@export_participants')->name('export_participants');
+    Route::post('/dashboard/export_participants', 'ParticipantController@export_participants')->name('export_participants');
 
-    Route::get('/dashboard/reset', 'DashboardController@reset')->name('reset');
-
-    Route::get('/logout', 'IndexController@logout')->name('logout');
+    Route::delete('/dashboard/reset', 'DashboardController@reset')->name('reset');
 });
 
 Route::middleware(['ongoing'])->group(function () {
     Route::get('/vote', 'VoteController@vote')->name('vote');
 
-    Route::get('/vote/increment_vote/{participant}', 'VoteController@increment_vote')->name('increment_vote');
+    Route::post('/vote/increment_vote/{participant}', 'VoteController@increment_vote')->name('increment_vote');
 
     Route::get('/participate', 'ParticipantController@participate')->name('participate');
 

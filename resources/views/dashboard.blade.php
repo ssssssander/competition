@@ -10,8 +10,12 @@
     </div>
     <div class="pull-right">
         <a href="{{ route('terms') }}" class="btn btn-lg btn-default text-uppercase">Wijzig periodes</a>
-        <a href="{{ route('export_participants') }}" class="btn btn-lg btn-default text-uppercase">Exporteer naar Excel</a>
-        <a href="{{ route('reset') }}" class="btn btn-lg btn-danger text-uppercase">Reset wedstrijd</a>
+        {!! Form::open(['route' => 'export_participants', 'class' => 'reset-form']) !!}
+        {!! Form::submit('Exporteer naar Excel', ['class' => 'btn btn-lg btn-default text-uppercase']) !!}
+        {!! Form::close() !!}
+        {!! Form::open(['route' => 'reset', 'method' => 'delete', 'class' => 'reset-form']) !!}
+        {!! Form::button('Reset wedstrijd', ['class' => 'btn btn-lg btn-danger text-uppercase reset']) !!}
+        {!! Form::close() !!}
     </div>
     <table class="table table-striped table-bordered table-hover table-condensed table-responsive">
         <thead>
@@ -46,7 +50,10 @@
                     </td>
                     <td>{{ $participant->created_at }}</td>
                     <td>
-                        <a href="{{ route('delete_participant', ['participant' => $participant]) }}" class="btn btn-danger btn-delete" data-toggle="tooltip" title="Verwijder deze deelnemer"><span class="glyphicon glyphicon-remove"></span></a>
+                        {!! Form::open(['route' => ['delete_participant', $participant], 'method' => 'delete', 'class' => 'delete-participant-form']) !!}
+                        {!! Form::button('<span class="glyphicon glyphicon-remove"></span>',
+                            ['class' => 'btn btn-danger delete-participant', 'data-toggle' => 'tooltip', 'title' => 'Verwijder deze deelnemer']) !!}
+                        {!! Form::close() !!}
                     </td>
                 </tr>
             @empty
@@ -56,4 +63,39 @@
             @endforelse
         </tbody>
     </table>
+    <script>
+        $('.delete-participant').on('click', function(){
+            bootbox.confirm({
+                title: 'Deelnemer verwijderen',
+                message: 'Weet je zeker dat je deze deelnemer wil verwijderen?',
+                buttons: {
+                    confirm: {
+                        label: 'Ja',
+                        className: 'btn-danger'
+                    },
+                    cancel: {
+                        label: 'Nee, breng me terug!'
+                    }
+                },
+                callback: function(result){ if(result) $('.delete-participant-form').submit(); }
+            })
+        });
+
+        $('.reset').on('click', function(){
+            bootbox.confirm({
+                title: 'Wedstijd resetten',
+                message: 'Weet je zeker dat je de wedstrijd wil resetten? Dit zal alle deelnemers, winnaars en periodes resetten en je een volledig schone lei geven.',
+                buttons: {
+                    confirm: {
+                        label: 'Ja',
+                        className: 'btn-danger'
+                    },
+                    cancel: {
+                        label: 'Nee, breng me terug!'
+                    }
+                },
+                callback: function(result){ if(result) $('.reset-form').submit(); }
+            })
+        });
+    </script>
 @endsection

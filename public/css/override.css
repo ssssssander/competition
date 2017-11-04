@@ -43,14 +43,19 @@ body {
     width: auto;
     max-width: 300px;
 }
-.thumbnail .caption + a, .thumbnail .caption + span{
+.thumbnail .caption + form input, .navbar li a input {
+   border: none;
+   background: none;
+   text-transform: inherit;
+}
+.thumbnail .caption + form input, .thumbnail .caption + span{
     width: 48px;
     height: 48px;
 }
-.thumbnail .caption + a, .thumbnail .caption + span.own {
+.thumbnail .caption + form input, .thumbnail .caption + span.own {
     background-image: url('../images/vote.png');
 }
-.thumbnail .caption + span, .thumbnail .caption + a:hover {
+.thumbnail .caption + span, .thumbnail .caption + form input:hover {
     background-image: url('../images/voted.png');
 }
 .table tbody tr td {
@@ -58,4 +63,7 @@ body {
 }
 .btn {
     font-weight: bold;
+}
+form.delete-participants-form, form.reset-form {
+    display: inline-block;
 }

@@ -10,7 +10,7 @@
 7. Run `crontab -e` (or `nano /etc/crontab`) and add this Cron entry to the end of the file to set up the Laravel scheduler and start the competition: `* * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1`
 
 ## Additional info
-- The Laravel form builder dependency is vital to this project, don't remove it
+- The `kris/laravel-form-builder` and `laravelcollective/html` dependencies are vital to this project, don't remove them
 - When a term ends an email will be sent to the admin email address notifying them of the term ending
 - Every day at midnight an email will be sent to the admin email address with an Excel file attached containing all the participants on the previous day
 - When you remove a participant, the row is soft deleted
